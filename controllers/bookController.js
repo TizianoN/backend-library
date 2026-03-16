@@ -9,4 +9,31 @@ function index(req, res) {
   });
 }
 
-module.exports = { index };
+function show(req, res) {
+  res.json({ message: "WIP" });
+}
+
+function store(req, res) {
+  res.json({ message: "WIP" });
+}
+
+function update(req, res) {
+  res.json({ message: "WIP" });
+}
+
+function modify(req, res) {
+  res.json({ message: "WIP" });
+}
+
+function destroy(req, res) {
+  res.json({ message: "WIP" });
+}
+
+module.exports = {
+  index,
+  show,
+  store,
+  update,
+  modify,
+  destroy,
+};
