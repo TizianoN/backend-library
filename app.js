@@ -1,6 +1,13 @@
 const express = require("express");
 const app = express();
 
+// # MIDDLEWARES
+const logger = require("./middlewares/logger");
+
+app.use(logger);
+app.use(express.static("public"));
+app.use(express.json());
+
 // # TEST ROUTE
 app.get("/", (req, res) => {
   res.send("Hello world");
