@@ -9,8 +9,27 @@ app.use(express.static("public"));
 app.use(express.json());
 
 // # TEST ROUTE
+
+const connection = require("./database/conn");
 app.get("/", (req, res) => {
-  res.send("Hello world");
+  const booksSQL = "SELECT * FROM `books`";
+  connection.query(booksSQL, (err, result) => {
+    if (err) {
+      const responseData = {
+        message: "Database query failed",
+      };
+
+      if (process.env.APP_MODE === "dev") {
+        responseData.error = err.message;
+      }
+
+      console.log(err.message);
+      return res.status(500).json(responseData);
+    }
+
+    console.log(result);
+    res.send("Hello world");
+  });
 });
 
 app.get("/test-error", (req, res) => {
@@ -26,6 +45,7 @@ app.use(errorMiddleware.error500);
 
 // # SERVER START
 
-app.listen(3000, () => {
-  console.log("Server listening");
+app.listen(process.env.APP_PORT, () => {
+  console.log("Server environment: " + process.env.APP_MODE);
+  console.log("Server listening on " + process.env.APP_URL + ":" + process.env.APP_PORT);
 });
