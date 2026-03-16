@@ -1,0 +1,21 @@
+{
+  "name": "backend-library",
+  "version": "1.0.0",
+  "description": "Backend API Express Library",
+  "keywords": [
+    "Express",
+    "API",
+    "SQL"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "placeholder"
+  },
+  "license": "ISC",
+  "author": "TizianoN",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
