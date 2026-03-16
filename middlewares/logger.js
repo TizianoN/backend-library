@@ -1,5 +1,5 @@
 function logger(req, res, next) {
-  if (process.env.APP_MODE == "dev") {
+  if (process.env.APP_MODE == "DEV") {
     const now = new Date();
 
     const fullYear = now.getFullYear() < 10 ? "0" + now.getFullYear() : now.getFullYear();
