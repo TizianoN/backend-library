@@ -15,16 +15,25 @@ function index(req, res) {
 
     GROUP BY books.id`;
 
-  connection.query(booksSQL, (err, result) => {
+  connection.query(booksSQL, (err, bookResult) => {
     if (err) return handleFailedQuery(err, res);
-    res.json({ result });
+
+    const books = bookResult.map((book) => {
+      return {
+        ...book,
+        avg_vote: parseInt(book.avg_vote),
+        image: buildBookImgPath(book.image),
+      };
+    });
+
+    res.json({ result: books });
   });
 }
 
 function show(req, res) {
   const { id } = req.params;
 
-  const booksSQL = `SELECT * FROM books WHERE id = 1`;
+  const booksSQL = `SELECT * FROM books WHERE id = ?`;
   connection.query(booksSQL, [id], (err, bookResult) => {
     if (err) return handleFailedQuery(err, res);
     const [book] = bookResult;
@@ -34,33 +43,38 @@ function show(req, res) {
     connection.query(reviewSQL, [id], (err, reviewsResult) => {
       if (err) return handleFailedQuery(err, res);
       book.reviews = reviewsResult;
+      book.image = buildBookImgPath(book.image);
 
       res.json({ result: book });
     });
   });
 }
 
-function store(req, res) {
-  res.json({ message: "WIP" });
-}
+// function store(req, res) {
+//   res.json({ message: "WIP" });
+// }
 
-function update(req, res) {
-  res.json({ message: "WIP" });
-}
+// function update(req, res) {
+//   res.json({ message: "WIP" });
+// }
 
-function modify(req, res) {
-  res.json({ message: "WIP" });
-}
+// function modify(req, res) {
+//   res.json({ message: "WIP" });
+// }
 
-function destroy(req, res) {
-  res.json({ message: "WIP" });
-}
+// function destroy(req, res) {
+//   res.json({ message: "WIP" });
+// }
 
 module.exports = {
   index,
   show,
-  store,
-  update,
-  modify,
-  destroy,
+  //   store,
+  //   update,
+  //   modify,
+  //   destroy,
 };
+
+function buildBookImgPath(image) {
+  return `${process.env.APP_URL}:${process.env.APP_PORT}/img/books/${image}`;
+}
