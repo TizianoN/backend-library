@@ -2,10 +2,12 @@ const express = require("express");
 const app = express();
 
 // # MIDDLEWARES
+const cors = require("cors");
 const logger = require("./middlewares/logger");
 
 app.use(logger);
 app.use(express.static("public"));
+app.use(cors({ origin: process.env.FRONTEND_URL }));
 app.use(express.json());
 
 // # ROUTES
