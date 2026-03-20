@@ -1,27 +1,20 @@
 @here
 
 Ciao ragazzi,
-esercizio di oggi: **Setup Web App Express**
+esercizio di oggi: **Book Reviews**
 
-repo: `webapp-express`
+repo: `webapp-react`
 
 ### Esercizio
 
-Ciao ragazzi, è ora di mettere alla prova le vostre conoscenze iniziando a costruire la vostra prima app completa! Ecco i primi step
+Concludiamo migliorando l’esperienza sulla nostra SPA, inserendo un **loader**.
 
-- Utilizzando il file in allegato, **creiamo un database** con MySQL Workbench
-- Creiamo una **nuova applicazione Express**
-- **Colleghiamo l’app al db** e verifichiamo che tutto funzioni
-- Prepariamo **una rotta index** per ottenere la lista dei film
-- Prepariamo **una rotta show** per ottenere i dettagli di un singolo film e le sue recensioni
+- creiamo un componente loader
+- Questo componente deve poter apparire su qualunque pagina della nostra app.
+- Creiamo e sfruttiamo un Context per dare la possibilità ad ogni componente di attivare o disattivare il loader sulla propria pagina
 
-### Bonus
+**BONUS**:
 
-- Inserire le immagini nel progetto express
-- Inserire i dati di connessione al database come variabili d’ambiente
-- Inserire le vostre API in controller
-- Inserire le vostre rotte in un router
-- Inserire un middleware per le rotte inesistenti
-- Inserire un middleware per la gestione errori
+- Personalizziamo l’aspetto della nostra app col CSS
 
-Buon Lavoro
+Buon Lavoro e buon divertimento!
